@@ -1,0 +1,25 @@
+
+@import "~bootstrap/scss/bootstrap-utilities";
+@import "~bootstrap/scss/bootstrap-grid";
+@import "~normalize.css";
+
+@import "fonts";
+@import "vars";
+
+@import "homepage";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $regular;
+}
+
+a {
+  text-decoration:none;
+  color:$accent;
+  &:hover {
+    filter: brightness(75%);
+  }
+}
