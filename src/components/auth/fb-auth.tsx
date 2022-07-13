@@ -10,11 +10,7 @@ const fbLogin = () => {
             // const credential = FacebookAuthProvider.credentialFromResult(result);
             // const accessToken = credential ? credential.accessToken : null;
             const user = result.user;
-            console.log(user)
-            AuthStore.setUser({
-                photoUrl: user.photoURL,
-                name: user.displayName
-            })
+            AuthStore.setUser(user)
         })
         .catch((error) => {
             const errorCode = error.code;

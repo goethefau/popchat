@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx"
-import {auth, firestore} from "./firebase-config";
+import {auth, firestore} from "../firestore/firebase-config";
 import {
     GoogleAuthProvider,
     FacebookAuthProvider,
@@ -10,12 +10,11 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
     fetchSignInMethodsForEmail,
+    User as UserInfo
 } from "firebase/auth"
 
 // Import the functions you need from the SDKs you need
-export interface User {
-    name: string | null,
-    photoUrl: string | null
+export interface User extends UserInfo{
 }
 
 type AuthMethod = (email: string, password: string) => void
@@ -62,6 +61,7 @@ class AuthStoreInstance {
         signOut(auth)
             .then(() => {
                 this.user = null
+                window.location.pathname = "/"
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -75,12 +75,7 @@ const AuthStore = new AuthStoreInstance()
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        AuthStore.setUser({
-            name: user.displayName,
-            photoUrl: user.photoURL
-        })
-    } else {
-        AuthStore.logout()
+        AuthStore.setUser(user)
     }
 });
 

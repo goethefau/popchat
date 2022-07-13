@@ -9,10 +9,7 @@ const googleLogin = () => {
             // const credential = GoogleAuthProvider.credentialFromResult(result)
             // const token = credential ? credential.accessToken : null
             const user = result.user;
-            AuthStore.setUser({
-                name: user.displayName,
-                photoUrl: user.photoURL
-            })
+            AuthStore.setUser(user)
         })
         .catch((error) => {
             const errorCode = error.code;
