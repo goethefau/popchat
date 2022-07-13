@@ -10,9 +10,9 @@ const User = () => {
     return (
         user && (
             <div className="d-flex align-items-center">
-                <UserAvatar src={user.photoUrl || ""} className="me-3"/>
+                <UserAvatar src={user.photoURL || ""} className="me-3" referrerPolicy="no-referrer"/>
                 <div style={{color: typography_theme_props.$light, fontFamily: typography_theme_props.medium, fontSize: 14}}>
-                    {user.name}
+                    {user.displayName}
                 </div>
             </div>
         )
