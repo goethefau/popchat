@@ -19,13 +19,17 @@ export interface TypographyProps {
 
 const system_fonts = `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`;
 
-export const typography_theme_props:TypographyProps["theme"] = {
+export interface ThemeProps {
+    theme: TypographyProps["theme"]
+}
+
+export const typography_theme_props: TypographyProps["theme"] = {
     regular: `"GT Walsheim Regular", ${system_fonts}`,
     medium: `"GT Walsheim Medium", ${system_fonts}`,
     bold: `"GT Walsheim Bold", ${system_fonts}`,
     $dark: "#1C1E41",
     $light: "#98A2B3",
-    $accent_light: "#EEF4FF",
+    $accent_light: "#F7F9FF",
     $accent: "#8E9AF9",
     $accent_dark: "#6172F3",
     $accent_super_dark: "#4E5BA6",
